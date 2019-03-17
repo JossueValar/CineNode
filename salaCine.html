@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cine</title>
+    
+</head>
+<body onload="cargardatosdelapelicula()">
+    
+    <span id="titulodelapelicula"></span>
+<div class="todo">
+	<table class="bloqueGrande">
+            
+        <tr class="filaH">
+            
+            <td class="seats" class="asiento1" id="H1" onclick="butaca('H1')">H1</td>
+
+            <td class="seats" class="asiento2" id="H2" onclick="butaca('H2')">H2</td>
+
+            <td class="seats" class="asiento3" id="H3" onclick="butaca('H3')">H3</td>
+            
+            <td class="seats" class="asiento4" id="H4" onclick="butaca('H4')">H4</td>
+            
+        </tr>
+        
+        <tr class="filaG">
+            
+            <td class="seats" class="asiento1" id="G1" onclick="butaca('G1')">G1</td>
+
+            <td class="seats" class="asiento2" id="G2" onclick="butaca('G2')">G2</td>
+
+            <td class="seats" class="asiento3" id="G3" onclick="butaca('G3')">G3</td>
+            
+            <td class="seats" class="asiento4" id="G4" onclick="butaca('G4')">G4</td>
+            
+        </tr>
+        
+        <tr class="filaF">
+            
+            <td class="seats" class="asiento1" id="F1" onclick="butaca('F1')">F1</td>
+
+            <td class="seats" class="asiento2" id="F2" onclick="butaca('F2')">F2</td>
+
+            <td class="seats" class="asiento3" id="F3" onclick="butaca('F3')">F3</td>
+            
+            <td class="seats"  class="asiento4" id="F4" onclick="butaca('F4')">F4</td>
+            
+        </tr>
+        
+        <tr class="filaE">
+            
+            <td class="seats" class="asiento1" id="E1" onclick="butaca('E1')">E1</td>
+
+            <td class="seats" class="asiento2" id="E2" onclick="butaca('E2')">E2</td>
+
+            <td class="seats" class="asiento3" id="E3" onclick="butaca('E3')">E3</td>
+            
+            <td class="seats" class="asiento4" id="E4" onclick="butaca('E4')">E4</td>
+            
+        </tr>
+        
+        <tr class="filaD">
+            
+            <td class="seats" class="asiento1" id="D1" onclick="butaca('D1')">D1</td>
+
+            <td class="seats" class="asiento2" id="D2" onclick="butaca('D2')">D2</td>
+
+            <td class="seats" class="asiento3" id="D3" onclick="butaca('D3')">D3</td>
+            
+            <td class="seats" class="asiento4" id="D4" onclick="butaca('D4')">D4</td>
+            
+        </tr>
+        
+        <tr class="filaC">
+            
+            <td class="seats" class="asiento1" id="C1" onclick="butaca('C1')">C1</td>
+
+            <td class="seats" class="asiento2" id="C2" onclick="butaca('C2')">C2</td>
+
+            <td class="seats" class="asiento3" id="C3" onclick="butaca('C3')">C3</td>
+            
+            <td class="seats" class="asiento4" id="C4" onclick="butaca('C4')">C4</td>
+            
+        </tr>
+        
+        <tr class="filaB">
+            
+            <td class="seats" class="asiento1" id="B1" onclick="butaca('B1')">B1</td>
+
+            <td class="seats" class="asiento2" id="B2" onclick="butaca('B2')">B2</td>
+
+            <td class="seats" class="asiento3" id="B3" onclick="butaca('B3')">B3</td>
+            
+            <td class="seats" class="asiento4" id="B4" onclick="butaca('B4')">B4</td>
+            
+        </tr>
+        
+        <tr class="filaA">
+            
+            <td class="seats" class="asiento1" id="A1" onclick="butaca('A1')">A1</td>
+
+            <td class="seats" class="asiento2" id="A2" onclick="butaca('A2')">A2</td>
+
+            <td class="seats" class="asiento3" id="A3" onclick="butaca('A3')">A3</td>
+            
+            <td class="seats" class="asiento4" id="A4" onclick="butaca('A4')">A4</td>
+            
+        </tr>
+		
+	</table>
+    
+    
+
+	<table class="bloquePequeno">
+        
+        <tr class="filaDD">
+            
+            <td class="seats" class="asiento5" id="D5" onclick="butaca('D5')">D5</td>
+            
+        </tr>
+        
+        <tr class="filaCC">
+            
+            <td class="seats" class="asiento5" id="C5" onclick="butaca('C5')">C5</td>
+
+            <td class="seats" class="asiento6" id="C6" onclick="butaca('C6')">C6</td>
+            
+        </tr>
+        
+        <tr class="filaBB">
+            
+            <td class="seats" class="asiento5" id="B5" onclick="butaca('B5')">B5</td>
+
+            <td class="seats" class="asiento6" id="B6" onclick="butaca('B6')">B6</td>
+            
+        </tr>
+        
+        <tr class="filaAA">
+            
+            <td class="seats" class="asiento5" id="A5" onclick="butaca('A5')">A5</td>
+
+            <td class="seats" class="asiento6" id="A6" onclick="butaca('A6')">A6</td>
+            
+        </tr>
+		
+	</table>
+
+	<div class="pantalla">PANTALLA</div>
+</div>
+    
+
+
+
+
+
+    <script>
+        
+    function butaca(value){
+    var butacas=value;
+    document.getElementById('asiento').innerHTML= butacas;
+    show('popup1');
+        }
+        
+        
+        
+    function cargardatosdelapelicula()
+    
+    {
+
+      var t="";
+        
+        var pelicula = JSON.parse(localStorage.getItem('peliculaseleccionada'))
+        
+        document.getElementById("titulodelapelicula").innerHTML += pelicula[0].nombre + "<hr><p>Tanda: "+pelicula[0].Fecha+ " Inicia: "+pelicula[0].HoraInicio +": "+pelicula[0].MinutoInicio+"<p/>";
+        
+        
+        
+        
+    }
+    </script>
+    <script type="text/javascript" src='peliculaFE.js'></script>
+    
+    <script>
+    
+            function cargadatosdelabutaca(){
+                
+    //el id de la butaca se los pasa como parametro desde el modal al que presiono guardar
+    var peliculaencache = JSON.parse(localStorage.getItem('peliculaseleccionada'))
+       switch(document.getElementById("asiento").innerHTML)
+           {
+               case "A1":
+                   peliculaencache[0].Asientos.A1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+               case "A2":
+                   peliculaencache[0].Asientos.A2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+               case "A3":
+                   peliculaencache[0].Asientos.A3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "A4":
+                   peliculaencache[0].Asientos.A4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "A5":
+                   peliculaencache[0].Asientos.A5.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A5.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A5.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "A6":
+                   peliculaencache[0].Asientos.A6.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.A6.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.A6.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "B1":
+                   peliculaencache[0].Asientos.B1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "B2":
+                   peliculaencache[0].Asientos.B2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "B3":
+                   peliculaencache[0].Asientos.B3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "B4":
+                   peliculaencache[0].Asientos.B4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "B5":
+                   peliculaencache[0].Asientos.B5.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B5.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B5.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "B6":
+                   peliculaencache[0].Asientos.B6.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.B6.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.B6.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "C1":
+                   peliculaencache[0].Asientos.C1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "C2":
+                   peliculaencache[0].Asientos.C2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "C3":
+                   peliculaencache[0].Asientos.C3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "C4":
+                   peliculaencache[0].Asientos.C4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "C5":
+                   peliculaencache[0].Asientos.C5.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C5.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C5.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "C6":
+                   peliculaencache[0].Asientos.C6.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.C6.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.C6.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "D1":
+                   peliculaencache[0].Asientos.D1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.D1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.D1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "D2":
+                   peliculaencache[0].Asientos.D2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.D2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.D2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "D3":
+                   peliculaencache[0].Asientos.D3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.D3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.D3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "D4":
+                   peliculaencache[0].Asientos.D4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.D4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.D4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "D5":
+                   peliculaencache[0].Asientos.D5.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.D5.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.D5.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "E1":
+                   peliculaencache[0].Asientos.E1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.E1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.E1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "E2":
+                   peliculaencache[0].Asientos.E2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.E2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.E2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "E3":
+                   peliculaencache[0].Asientos.E3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.E3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.E3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "E4":
+                   peliculaencache[0].Asientos.E4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.E4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.E4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                
+                case "F1":
+                   peliculaencache[0].Asientos.F1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.F1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.F1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "F2":
+                   peliculaencache[0].Asientos.F2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.F2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.F2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "F3":
+                   peliculaencache[0].Asientos.F3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.F3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.F3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "F4":
+                   peliculaencache[0].Asientos.F4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.F4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.F4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "G1":
+                   peliculaencache[0].Asientos.G1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.G1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.G1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "G2":
+                   peliculaencache[0].Asientos.G2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.G2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.G2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "G3":
+                   peliculaencache[0].Asientos.G3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.G3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.G3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "G4":
+                   peliculaencache[0].Asientos.G4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.G4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.G4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                case "H1":
+                   peliculaencache[0].Asientos.H1.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.H1.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.H1.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "H2":
+                   peliculaencache[0].Asientos.H2.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.H2.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.H2.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "H3":
+                   peliculaencache[0].Asientos.H3.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.H3.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.H3.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                case "H4":
+                   peliculaencache[0].Asientos.H4.NombreEstudiante= document.getElementById("iddelinputnombredelmodal").value;
+                   peliculaencache[0].Asientos.H4.Seccion= document.getElementById("iddelinputsecciondelmodal").value;
+                   peliculaencache[0].Asientos.H4.Carnet= document.getElementById("iddelinputCrnetdelmodal").value;
+                   break;
+                   
+                   //escribir el resto de los casos, para cada una de las butacas
+           }
+    
+    
+    //deben tener linkeado el js de peliculafrontend
+    var peliculainstanciada = new _Pelicula(peliculaencache[0]._id,
+      peliculaencache[0].nombre,
+    peliculaencache[0].DuracionEnMinutos,
+    peliculaencache[0].Genero,
+    peliculaencache[0].IdiomaAudio,
+    peliculaencache[0].IdiomaSub,
+    peliculaencache[0].Sinopsis,
+    peliculaencache[0].Clasificacion,
+    peliculaencache[0].Precio,
+    peliculaencache[0].HoraInicio,
+    peliculaencache[0].Fecha,
+    peliculaencache[0].MinutoInicio,
+    peliculaencache[0].Asientos,
+    peliculaencache[0].Imagen,
+    peliculaencache[0].Estado
+
+    )
+    
+    peliculainstanciada.Modificar().then(function(response) {
+  console.log("Success!", response);
+            alert("Butaca ha sido reservada campeón");
+            
+}, function(error) {
+  console.error("Failed!", error);
+             alert("Error " + error);
+            
+});
+       
+    
+}
+    
+        
+        function bloquearbutacasocupadas()
+    {
+        var peliculaseleccionada= JSON.parse(localStorage.getItem("peliculaseleccionada"));
+     if(peliculaseleccionada[0].ASIENTOS.A1.CARNET != null)
+         {
+             document.getElementById("A1").style.backgroundColor = "gray";
+              document.getElementById("A1").disabled = true;
+         }
+        
+         if(peliculaseleccionada[0].ASIENTOS.A2.CARNET != null)
+         {
+             document.getElementById("A2").style.backgroundColor = "gray";
+              document.getElementById("A2").disabled = true;
+         }
+         if(peliculaseleccionada[0].ASIENTOS.A3.CARNET != null)
+         {
+             document.getElementById("A3").style.backgroundColor = "gray";
+              document.getElementById("A3").disabled = true;
+         }
+
+    }
+    </script>
+    
+    <div class="popup" id="popup1">
+        <a>Numero de butaca: <span id="asiento"></span> </a> <br>
+        <a>Nombre: </a><input type="text" id="iddelinputnombredelmodal">
+        <br>
+        <a>Seccion: </a><input type="text" id="iddelinputsecciondelmodal">
+        <br>
+        <a>Carnet: </a><input type="number" id="iddelinputCrnetdelmodal"><br>
+        <button onclick="cargadatosdelabutaca()">Cargar</button>
+        
+  <a href="#" onclick="hide('popup1')">Listo!</a>
+</div>
+    
+    <link rel="stylesheet" type="text/css" href="CSS/salacine.css">
+    
+    <script type="text/javascript" src="JSsala.js"></script>
+</body>
+</html>

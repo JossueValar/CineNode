@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendario de Cine</title>
+</head>
+<body>
+  <div>
+<a href="index.html">Ir al menu</a><br>
+<a href="nuevapelicula.html">Crear una nueva pelicula</a><br>
+<a href="">Crear un nuevo usuario</a><br>
+<a href="">Salir</a>
+</div>
+<div id="calendar">
+  <h1>March</h1>
+    <span id="mesactual">3</span>
+     <span id ="annoactual">2019</span>
+  <table>
+  	<tr>
+  		<td class="day">Mon</td>
+  		<td class="day">Tue</td>
+  		<td class="day">Wed</td>
+  		<td class="day">Thu</td>
+  		<td class="day">Fri</td>
+  		<td class="day">Sat</td>
+  		<td class="day">Sun</td>
+  	</tr>
+    <tr>
+    	<td id="25"  class="current">25</td>
+    	<td id="26" class="lastmonth">26</td>
+    	<td id="27" class="lastmonth">27</td>
+    	<td id="28" class="lastmonth">28</td>
+    	<td id="1" class="hastask">1</td>
+    	<td id="2">2</td>
+    	<td id="3">3</td>
+    </tr>
+
+    <tr>
+    	<td id="4">4</td>
+    	<td id="5">5</td>
+    	<td id="6" class="hastask">6</td>
+    	<td id="7">7</td>
+    	<td id="8">8</td>
+    	<td id="9" class="hastask">9</td>
+    	<td id="10">10</td>
+    </tr>
+
+    <tr>
+    	<td id="11">11</td>
+    	<td id="12" class="hastask">12</td>
+    	<td id="13">13</td>
+    	<td id="14">14</td>
+    	<td id="15">15</td>
+    	<td id="16">16</td>
+    	<td id="17">17</td>
+    </tr>
+    <tr>
+    	<td id="18" class="hastask">18</td>
+    	<td id="19">19</td>
+    	<td id="20">20</td>
+    	<td id="21">21</td>
+    	<td id="22">22</td>
+    	<td id="23" class="hastask">23</td>
+    	<td id="24">24</td>
+    </tr>
+
+    <tr>
+    	<td id="25">25</td>
+    	<td id="26">26</td>
+    	<td id="27" class="hastask">27</td>
+    	<td id="28">28</td>
+    	<td id="29">29</td>
+    	<td id="30">30</td>
+    	<td id="31">31</td>
+    </tr>
+  </table>
+</div>
+<input type="button" onclick="cargarpeliculasdelmesyanno()" value="Cargar">
+<link rel="stylesheet" type="text/css" href="CSS/calendario_css.css">
+    
+    <script type="text/javascript" src="peliculaFE.js"></script>
+     
+    <script type="text/javascript">
+   function agregaimgdepeliculaaldiv(imgenbase64,iddeldiv,iddelapelicula)  //  Primero llega a la funcion de abajo cargarpeliculasdelmesyanno
+
+    {
+        document.getElementById(iddeldiv).innerHTML += "<img src='"+imgenbase64+"' height='42' width='42' id= "+iddelapelicula+" onclick='cargataquilla(\""+iddelapelicula+"\")'>"; //  El fec dentro del getElementById es porque solo reconoce los numeros y hay que concatenar el fec
+    }
+    
+    function cargarpeliculasdelmesyanno()
+    {
+        let clasepeliculainstanciada = new _Pelicula();
+               clasepeliculainstanciada.peliculapormesyanno(document.getElementById("mesactual").innerHTML,document.getElementById("annoactual").innerHTML).then(function(response) {
+                   
+ for(var elemento in response)
+     {
+         var fechadelapeliculaactual = new Date(response[elemento].Fecha);
+         agregaimgdepeliculaaldiv(response[elemento].Imagen,fechadelapeliculaactual.getDate() ,response[elemento]._id);
+         
+     }
+                   
+                   
+                   
+                   
+}, function(error) {
+ console.log(error);
+});
+        
+        
+    }
+        
+        
+        function cargataquilla(id)
+        {
+
+
+             let clasepeliculainstanciada = new _Pelicula(id);
+               clasepeliculainstanciada.Seleccionarporid().then(function(response) {
+
+
+
+               localStorage.setItem("peliculaseleccionada",JSON.stringify(response));
+                   location.href="salaCine.html"
+}, function(error) {
+ console.log(error);
+});
+
+
+
+
+
+        }
+        
+        
+    </script>
+</body>
+</html>

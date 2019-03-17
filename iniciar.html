@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+
+</head>
+<body>
+
+<div id="login">
+	<p id="abierto">Login</p>
+		<p>
+			<label for="username">Email:</label>
+			<input type="text" id="email">
+		</p>
+		<p>
+			<label for="password">Contraseña:</label>
+			<input type="password" id="clave">
+		</p>
+		<p>
+			<button onclick="inicio()">Iniciar</button>
+		</p>
+
+</div>
+
+<script type="text/javascript">
+	function inicio(){
+    var administradorinstaciado = new _Administrador(0,"", document.getElementById("clave").value,document.getElementById("email").value,
+                                                  "" ,1,""
+                                                    
+                                                    );
+
+    administradorinstaciado.Login().then(function(response){
+    	alert("Bienvenido");
+    	localstorage.setItem("userlogin",JSON.stringify(response));
+        location.href="calendario.html";
+        
+    },function(){
+        alert("Contraseña Incorrecta");
+    });
+    }
+    
+    </script>
+
+<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/log.css">
+	<script type="text/javascript" src="log.js"></script>
+    <script type="text/javascript" src="claseAdminFE.js"></script>
+</body>
+</html>

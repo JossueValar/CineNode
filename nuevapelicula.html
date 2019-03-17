@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NuevaPelicula</title>
+</head>
+<body>
+	<div>
+<a href="index.html">Ir al menu</a><br>
+<a href="calendario.html">Ir al calendario</a><br>
+<a href="">Crear un nuevo usuario</a><br>
+<a href="">Salir</a>
+</div>
+<h1>Introduzca todos los datos de su pelicula</h1>
+
+<p>Nombre: <input type="text" id="nombre"></p>
+<p>Duracion en Minutos: <input type="number" id="duracion"></p>
+<p>Genero: <input type="text" id="genero"></p>
+<p>Idioma Audio: <input type="text" id="idiomaAudio"></p>
+<p>Idioma de los Subtitulos: <input type="text" id="idiomaSub"></p>
+<p>Sinopsis: <input type="text" id="sinopsis"></p>
+<p>Clasificaciones: <input type="text" id="clasificacion"></p>
+<p>Precio: <input type="number" id="precio"></p>
+<p>Hora de Inicio: <input type="number" id="horaIni"></p>
+<p>Minuto Inicio: <input type="number" id="minIni"></p>
+<p>Fecha: <input type="date" id="fecha"></p>
+<p>Imagen: <input type="file" id="imgpeli"></p>
+<a>Estado: </a>
+    <select id='estado'>
+  <option value="1">Activo</option>
+  <option value="0">Inactivo</option>
+</select>
+<br>
+<br>
+<button onclick="botonguardarclick()">Guardar</button>
+
+    <script src="jquery/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="peliculaFE.js"></script>
+    
+    
+    
+   
+</body>
+</html>
